@@ -1,47 +1,122 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Valentine Letter</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>💌 Valentine Letter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Aldrich&family=Pixelify+Sans:wght@400..700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Document</title>
-  </head>
-  <body>
-    <!-- Envelope Screen -->
-    <div id="envelope-container">
-      <img src="envelope.png" alt="Envelope" id="envelope" />
-      <p>♡ Letter for You ♡</p>
-      <p>كسمك يزوومي انت وحسام</p>
+  <!-- Scanline CRT overlay -->
+  <div id="scanlines"></div>
+
+  <!-- Custom cursor -->
+  <div id="custom-cursor"></div>
+
+  <!-- Floating hearts background -->
+  <div id="bg-particles"></div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 1: Boot / Loading sequence
+       ═══════════════════════════════════════ -->
+  <div class="scene" id="scene-boot">
+    <div id="boot-text"></div>
+    <div class="boot-skip">[ CLICK ANYWHERE TO SKIP ]</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 2: Envelope
+       ═══════════════════════════════════════ -->
+  <div class="scene" id="scene-envelope">
+    <div class="env-card">
+      <img src="envelope.png" alt="Envelope" id="envelope-img" />
+      <div class="env-label">✉ A Letter For You ✉</div>
+      <div class="env-hint">[ CLICK TO OPEN ]</div>
     </div>
+  </div>
 
-    <!-- Letter Screen -->
-    <div id="letter-container">
-      <div class="letter-window">
-        <h1 id="letter-title">logy Will you be my Valentine?</h1>
+  <!-- ═══════════════════════════════════════
+       SCENE 3: The Letter / Question
+       ═══════════════════════════════════════ -->
+  <div class="scene" id="scene-letter">
+    <div class="letter-window" id="letter-window">
 
-        <img src="cat_heart.gif" class="cat" id="letter-cat" />
+      <h1 id="letter-title"></h1>
 
-        <div class="buttons" id="letter-buttons">
-          <img src="yes.png" class="btn yes-btn" alt="Yes" />
+      <img src="cat_heart.gif" id="letter-cat" alt="pixel cat" />
 
-          <div class="no-wrapper">
-            <img src="no.png" class="btn no-btn" alt="No" />
-          </div>
+      <!-- Love Meter -->
+      <div id="progress-area">
+        <div id="progress-label-row">
+          <span>LOVE METER</span>
+          <span id="progress-pct">0%</span>
         </div>
+        <div id="progress-track">
+          <div id="progress-fill"></div>
+        </div>
+      </div>
 
-        <p id="final-text" class="final-text" style="display: none">
-          <strong>Valentine Date:</strong> Meow Restaurant at 7pm. Dress fancy,Your smile is required,Ali HOUSSENY  !
-        </p>
+      <!-- YES / NO buttons -->
+      <div class="btns" id="btns">
+        <button class="pixel-btn" id="yes-btn" aria-label="Yes">
+          <img src="yes.png" alt="YES" />
+        </button>
+        <div id="no-wrapper">
+          <button class="pixel-btn" id="no-btn" aria-label="No">
+            <img src="no.png" alt="NO" />
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SCENE 4: Accepted / Celebration
+       ═══════════════════════════════════════ -->
+  <div class="scene" id="scene-accepted">
+    <div class="accepted-window">
+
+      <h1 id="accepted-title">YIPPEEEE!! 🎉</h1>
+
+      <img src="cat_dance.gif" id="accepted-cat" alt="dancing cat" />
+
+      <div id="accepted-text">
+        <div class="date-box">
+          <div class="date-line">📍 Meow Restaurant &nbsp;·&nbsp; 7:00 PM</div>
+          <div class="date-line">🎀 Dress fancy &nbsp;·&nbsp; Bring your smile</div>
+          <div class="date-line">🐾 Cat attendance: confirmed</div>
+          <div class="name-line">See you there, Ali HOUSSENY! 💕</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       No-click shame badge
+       ═══════════════════════════════════════ -->
+  <div id="badge"></div>
+
+  <!-- ═══════════════════════════════════════
+       Escape popup
+       ═══════════════════════════════════════ -->
+  <div id="popup">
+    <div class="popup-box">
+      <div id="popup-cat">😾</div>
+      <p id="popup-msg"></p>
+      <div class="popup-ok-wrap">
+        <button id="popup-ok">OK FINE 💘</button>
       </div>
     </div>
-    <script src="script.js"></script>
-  </body>
+  </div>
+
+  <!-- Compiled from script.ts -->
+  <!-- Run: tsc script.ts --target ES2017 --lib dom,es2017 --strict --skipLibCheck -->
+  <script src="script.js"></script>
+</body>
 </html>
